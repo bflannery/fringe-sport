@@ -4,7 +4,7 @@ import GridList from '@material-ui/core/GridList'
 import GridListTile from '@material-ui/core/GridListTile'
 import GridListTileBar from '@material-ui/core/GridListTileBar'
 import IconButton from '@material-ui/core/IconButton'
-import StarBorderIcon from '@material-ui/icons/StarBorder'
+import InfoIcon from '@material-ui/icons/Info'
 import PropTypes from 'prop-types'
 
 const useStyles = makeStyles((theme) => ({
@@ -12,20 +12,15 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
-    overflow: 'hidden',
-    backgroundColor: theme.palette.background.paper
+    overflow: 'hidden'
+    // backgroundColor: theme.palette.background.paper
   },
   gridList: {
-    flexWrap: 'nowrap',
-    // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
-    transform: 'translateZ(0)'
+    width: 500,
+    height: 450
   },
-  title: {
-    color: theme.palette.primary.light
-  },
-  titleBar: {
-    background:
-      'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)'
+  icon: {
+    color: 'rgba(255, 255, 255, 0.54)'
   }
 }))
 
@@ -46,25 +41,22 @@ const useStyles = makeStyles((theme) => ({
  *   },
  * ];
  */
-
-export default function MaterialGridList({ items }) {
+export default function MaterialGridGallery({ items }) {
   const classes = useStyles()
 
   return (
     <div className={classes.root}>
-      <GridList className={classes.gridList} cols={2.5}>
+      <GridList cellHeight={180} className={classes.gridList}>
         {items.map((item) => (
           <GridListTile key={item.img}>
             <img src={item.img} alt={item.title} />
             <GridListTileBar
-              title={item.title}
-              classes={{
-                root: classes.titleBar,
-                title: classes.title
-              }}
               actionIcon={
-                <IconButton aria-label={`star ${item.title}`}>
-                  <StarBorderIcon className={classes.title} />
+                <IconButton
+                  aria-label={`Show ${item.title}`}
+                  className={classes.icon}
+                >
+                  <InfoIcon />
                 </IconButton>
               }
             />
@@ -80,6 +72,6 @@ const itemShape = {
   title: PropTypes.string.isRequired
 }
 
-MaterialGridList.propTypes = {
+MaterialGridGallery.propTypes = {
   items: PropTypes.oneOfType([PropTypes.shape(itemShape)]).isRequired
 }

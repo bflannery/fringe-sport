@@ -1,7 +1,6 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
-import MaterialGridList from '../MaterialGridList'
+import MaterialGridList from '../../components/MaterialGridList'
 
 const useStyles = makeStyles((theme) => ({
   popularRoot: {
@@ -19,4 +18,3 @@ export default function PopularEquipmentList() {
     </div>
   )
 }
-

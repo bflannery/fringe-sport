@@ -1,9 +1,9 @@
 import React from 'react'
-import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles'
-import ReactCarousel from '../components/Carousel'
-import PopularEquipmentList from '../components/PopularEquipmentList'
+import ReactCarousel from '../../components/Carousel'
+import PopularEquipmentList from './PopularEquipmentList'
+import CategoryGallery from './CategoryGallery'
 
 const useStyles = makeStyles((theme) => ({
   homepageRoot: {
@@ -24,7 +24,7 @@ export default function HomePage() {
         <ReactCarousel images={[]} />
         <PopularEquipmentList />
         {/* <NewEquipmentList /> */}
-        <Container className={classes.homepageBanner}>Home Page</Container>
+        <CategoryGallery />
       </Grid>
     </Grid>
   )
